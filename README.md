@@ -122,6 +122,10 @@ Zur vollständigen Erfüllung der Kriterien wurde in `tests/test_hello.py` ein e
 
 ```python
 def test_daniel_api_response():
+    import sys
+        import os
+        sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+    
     from src.hello import app
     client = app.test_client()
     response = client.get('/api/hello')
@@ -129,6 +133,7 @@ def test_daniel_api_response():
     assert b"Hello Spencer" in response.data
 
 ```
+Fehler von mir war das ich den Pfad falsch angegeben habe
 
 ### 5.2 Testlauf-Ergebnis
 
