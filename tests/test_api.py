@@ -44,6 +44,10 @@ class TestAPIEndpoints(unittest.TestCase):
         self.assertLess(response.elapsed.total_seconds(), 1.0)  # Response should be under 1 second
 
     def test_daniel_api_response(self):
+        import sys
+        import os
+        sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
         from src.hello import app
         client = app.test_client()
         response = client.get('/api/hello')
