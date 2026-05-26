@@ -43,5 +43,12 @@ class TestAPIEndpoints(unittest.TestCase):
         )
         self.assertLess(response.elapsed.total_seconds(), 1.0)  # Response should be under 1 second
 
+    def test_daniel_api_response(self):
+        from src.hello import app
+        client = app.test_client()
+        response = client.get('/api/hello')
+        assert response.status_code == 200
+        assert b"Hello Spencer" in response.data
+
 if __name__ == '__main__':
     unittest.main()
